@@ -11,8 +11,6 @@ import kotlinx.coroutines.withContext
 object CarrosRepositorio {
 
     private const val TAG = "CarrosRepositorio"
-
-    // Quantos carros aparecem em "Ofertas da Semana": os mais baratos da lista de carros
     const val QUANTIDADE_OFERTAS = 4
 
     private fun dao(context: Context): CarroDao = AppDatabase.getDatabase(context).carroDao()

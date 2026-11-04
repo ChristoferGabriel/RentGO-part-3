@@ -41,7 +41,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+<<<<<<< HEAD
 import androidx.compose.runtime.LaunchedEffect
+=======
+import androidx.compose.runtime.collectAsState
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -51,18 +55,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+<<<<<<< HEAD
 import androidx.compose.ui.platform.LocalContext
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+<<<<<<< HEAD
 import com.example.rentgo.data.CarrosRepositorio
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import com.example.rentgo.model.Carro
 import com.example.rentgo.model.Categoria
 import com.example.rentgo.model.formatarPreco
 import com.example.rentgo.ui.theme.RentGoCores
+<<<<<<< HEAD
+=======
+import com.example.rentgo.viewmodel.carrosViewModel
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
 private val listaDeFiltros = listOf("Sedã", "SUV", "Camionete", "Elétrico", "Até R$ 150")
 
@@ -89,11 +103,17 @@ fun TelaPesquisa(
     onVoltar: () -> Unit,
     onAbrirCarro: (Carro) -> Unit
 ) {
+<<<<<<< HEAD
     val context = LocalContext.current
+=======
+    val viewModel = carrosViewModel()
+    val uiState by viewModel.uiState.collectAsState()
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     var busca by remember { mutableStateOf("") }
     var mostrarDialogo by remember { mutableStateOf(false) }
     var carroEmEdicao by remember { mutableStateOf<Carro?>(null) }
 
+<<<<<<< HEAD
     var carrosDoBanco by remember { mutableStateOf(listOf<Carro>()) }
     var carregando by remember { mutableStateOf(true) }
 
@@ -104,6 +124,12 @@ fun TelaPesquisa(
 
     val filtrosSelecionados = remember { mutableStateListOf(false, false, false, false, false) }
     val carros = filtrarCarros(carrosDoBanco, busca, filtrosSelecionados)
+=======
+    val carregando = uiState.carregando
+
+    val filtrosSelecionados = remember { mutableStateListOf(false, false, false, false, false) }
+    val carros = filtrarCarros(uiState.carros, busca, filtrosSelecionados)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
     if (mostrarDialogo) {
         DialogoCarro(
@@ -121,7 +147,11 @@ fun TelaPesquisa(
                         arCondicionado = arCondicionado,
                         lugares = lugares
                     )
+<<<<<<< HEAD
                     CarrosRepositorio.inserir(context, novo) { listaAtualizada -> carrosDoBanco = listaAtualizada }
+=======
+                    viewModel.adicionarCarro(novo)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                 } else {
                     val editado = editando.copy(
                         nome = nome.trim(),
@@ -131,7 +161,11 @@ fun TelaPesquisa(
                         arCondicionado = arCondicionado,
                         lugares = lugares
                     )
+<<<<<<< HEAD
                     CarrosRepositorio.atualizar(context, editado) { listaAtualizada -> carrosDoBanco = listaAtualizada }
+=======
+                    viewModel.atualizarCarro(editado)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                 }
                 mostrarDialogo = false
             }
@@ -222,7 +256,11 @@ fun TelaPesquisa(
                             mostrarDialogo = true
                         },
                         aoRemover = {
+<<<<<<< HEAD
                             CarrosRepositorio.deletar(context, carro) { listaAtualizada -> carrosDoBanco = listaAtualizada }
+=======
+                            viewModel.removerCarro(carro)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                         }
                     )
                     Spacer(modifier = Modifier.height(14.dp))
@@ -578,4 +616,8 @@ fun CardDoCarro(
 @Composable
 private fun TelaPesquisaPreview() {
     TelaPesquisa(onVoltar = {}, onAbrirCarro = {})
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)

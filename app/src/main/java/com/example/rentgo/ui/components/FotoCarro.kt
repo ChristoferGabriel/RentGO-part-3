@@ -43,7 +43,11 @@ private val IconeCamionete: ImageVector by lazy {
         viewportWidth = 24f,
         viewportHeight = 24f
     ).apply {
+<<<<<<< HEAD
         // Carroceria: caçamba aberta atrás, cabine e capô na frente
+=======
+
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
         path(
             stroke = SolidColor(Color.Black),
             strokeLineWidth = 1.7f,
@@ -64,7 +68,11 @@ private val IconeCamionete: ImageVector by lazy {
             moveTo(8.3f, 17f)
             horizontalLineTo(14.7f)
         }
+<<<<<<< HEAD
         // Janela da cabine
+=======
+
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
         path(
             stroke = SolidColor(Color.Black),
             strokeLineWidth = 1.4f,
@@ -77,7 +85,11 @@ private val IconeCamionete: ImageVector by lazy {
             lineTo(15.3f, 10f)
             close()
         }
+<<<<<<< HEAD
         // Roda de trás
+=======
+
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
         path(
             stroke = SolidColor(Color.Black),
             strokeLineWidth = 1.7f,
@@ -89,7 +101,11 @@ private val IconeCamionete: ImageVector by lazy {
             arcToRelative(2.3f, 2.3f, 0f, true, true, -4.6f, 0f)
             close()
         }
+<<<<<<< HEAD
         // Roda da frente
+=======
+
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
         path(
             stroke = SolidColor(Color.Black),
             strokeLineWidth = 1.7f,
@@ -140,4 +156,8 @@ fun FotoCarro(
             )
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)

@@ -45,7 +45,11 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+<<<<<<< HEAD
 import androidx.compose.runtime.LaunchedEffect
+=======
+import androidx.compose.runtime.collectAsState
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -55,7 +59,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+<<<<<<< HEAD
 import androidx.compose.ui.platform.LocalContext
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -67,7 +74,10 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+<<<<<<< HEAD
 import com.example.rentgo.data.CarrosRepositorio
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import com.example.rentgo.data.SessaoUsuario
 import com.example.rentgo.model.Carro
 import com.example.rentgo.model.Categoria
@@ -78,6 +88,10 @@ import com.example.rentgo.ui.components.FotoCarro
 import com.example.rentgo.ui.components.iconeDaCategoria
 import com.example.rentgo.ui.components.coresCampoRentGo
 import com.example.rentgo.ui.theme.RentGoCores
+<<<<<<< HEAD
+=======
+import com.example.rentgo.viewmodel.carrosViewModel
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
 private enum class Ordenacao(val rotulo: String) {
     PADRAO("Ordem padrão"),
@@ -93,6 +107,7 @@ fun HomeScreen(
     onAbrirPerfil: () -> Unit
 ) {
     val usuario = SessaoUsuario.usuarioLogado
+<<<<<<< HEAD
     val context = LocalContext.current
 
     var ofertasDoBanco by remember { mutableStateOf(listOf<Carro>()) }
@@ -101,6 +116,12 @@ fun HomeScreen(
         ofertasDoBanco = CarrosRepositorio.buscarOfertas(context)
         carregando = false
     }
+=======
+    val viewModel = carrosViewModel()
+    val uiState by viewModel.uiState.collectAsState()
+    val ofertasDoBanco = uiState.ofertas
+    val carregando = uiState.carregando
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
     var busca by rememberSaveable { mutableStateOf("") }
     var categoriaSelecionada by rememberSaveable { mutableStateOf<Categoria?>(null) }
@@ -598,4 +619,8 @@ private fun CartaoCategoria(
 @Composable
 private fun HomeScreenPreview() {
     HomeScreen(onAbrirCarro = {}, onVerTodas = {}, onAbrirPerfil = {})
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)

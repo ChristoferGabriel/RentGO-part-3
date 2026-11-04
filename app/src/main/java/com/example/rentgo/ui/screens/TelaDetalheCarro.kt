@@ -44,7 +44,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+<<<<<<< HEAD
 import androidx.compose.runtime.LaunchedEffect
+=======
+import androidx.compose.runtime.collectAsState
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -54,17 +58,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+<<<<<<< HEAD
 import androidx.compose.ui.platform.LocalContext
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+<<<<<<< HEAD
 import com.example.rentgo.data.CarrosRepositorio
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import com.example.rentgo.model.Carro
 import com.example.rentgo.model.formatarPreco
 import com.example.rentgo.ui.components.FotoCarro
 import com.example.rentgo.ui.components.TopoRentGo
 import com.example.rentgo.ui.theme.RentGoCores
+<<<<<<< HEAD
+=======
+import com.example.rentgo.viewmodel.carrosViewModel
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
 @Composable
 fun TelaDetalheCarro(
@@ -72,6 +86,7 @@ fun TelaDetalheCarro(
     onVoltar: () -> Unit,
     onReservar: (Carro) -> Unit
 ) {
+<<<<<<< HEAD
     val context = LocalContext.current
     var carroDoBanco by remember(carroId) { mutableStateOf<Carro?>(null) }
     var carregando by remember(carroId) { mutableStateOf(true) }
@@ -87,6 +102,14 @@ fun TelaDetalheCarro(
     }
 
     val carro = carroDoBanco
+=======
+    val viewModel = carrosViewModel()
+    val uiState by viewModel.uiState.collectAsState()
+    val carregando = uiState.carregando
+    var mostrarEdicao by remember { mutableStateOf(false) }
+
+    val carro = uiState.carroPorId(carroId)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     if (carro == null) {
         Scaffold(
             containerColor = RentGoCores.Fundo,
@@ -121,7 +144,11 @@ fun TelaDetalheCarro(
                         arCondicionado = arCondicionado,
                         lugares = lugares
                     )
+<<<<<<< HEAD
                     CarrosRepositorio.atualizar(context, editado) { lista -> atualizarComBanco(lista) }
+=======
+                    viewModel.atualizarCarro(editado)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                     mostrarEdicao = false
                 }
             )
@@ -153,9 +180,13 @@ fun TelaDetalheCarro(
                         onVoltar = onVoltar,
                         onEditar = { mostrarEdicao = true },
                         onFavoritar = {
+<<<<<<< HEAD
                             CarrosRepositorio.atualizar(context, carro.copy(favorito = !carro.favorito)) { lista ->
                                 atualizarComBanco(lista)
                             }
+=======
+                            viewModel.alternarFavorito(carro)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                         }
                     )
                 }
@@ -446,4 +477,8 @@ private fun BarraPrecoReservar(precoDia: Double, onReservar: () -> Unit) {
     }
 }
 
+<<<<<<< HEAD
 internal fun arredondar(valor: Double): Double = Math.round(valor * 100) / 100.0
+=======
+internal fun arredondar(valor: Double): Double = Math.round(valor * 100) / 100.0
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)

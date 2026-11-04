@@ -6,6 +6,10 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.rentgo.model.Reserva
+<<<<<<< HEAD
+=======
+import kotlinx.coroutines.flow.Flow
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
 @Dao
 interface ReservaDao {
@@ -14,7 +18,11 @@ interface ReservaDao {
     suspend fun inserir(reserva: Reserva)
 
     @Query("SELECT * FROM reservas ORDER BY id")
+<<<<<<< HEAD
     suspend fun buscarTodos(): List<Reserva>
+=======
+    fun buscarTodos(): Flow<List<Reserva>>
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
     @Update
     suspend fun atualizar(reserva: Reserva)

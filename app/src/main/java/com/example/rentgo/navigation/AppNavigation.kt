@@ -6,7 +6,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+<<<<<<< HEAD
 import androidx.compose.ui.platform.LocalContext
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -14,7 +17,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+<<<<<<< HEAD
 import com.example.rentgo.data.ReservasRepositorio
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import com.example.rentgo.data.SessaoUsuario
 import com.example.rentgo.ui.components.BarraInferior
 import com.example.rentgo.ui.screens.CadastroScreen
@@ -33,6 +39,10 @@ import com.example.rentgo.ui.screens.TelaPagamento
 import com.example.rentgo.ui.screens.TelaPesquisa
 import com.example.rentgo.ui.screens.TelaReservaConcluida
 import com.example.rentgo.ui.theme.RentGoCores
+<<<<<<< HEAD
+=======
+import com.example.rentgo.viewmodel.reservasViewModel
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
 private val rotasComBarra = setOf(
     Rotas.HOME, Rotas.CARROS, Rotas.AGENDAMENTO, Rotas.FAVORITOS, Rotas.PERFIL
@@ -43,9 +53,14 @@ fun AppNavigation() {
     val navController = rememberNavController()
     val entradaAtual by navController.currentBackStackEntryAsState()
     val rotaAtual = entradaAtual?.destination?.route
+<<<<<<< HEAD
     val context = LocalContext.current
 
     val pagamentoViewModel: PagamentoViewModel = viewModel()
+=======
+    val pagamentoViewModel: PagamentoViewModel = viewModel()
+    val reservasViewModel = reservasViewModel()
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
     fun irParaAba(rota: String) {
         navController.navigate(rota) {
@@ -124,7 +139,11 @@ fun AppNavigation() {
                     onGerenciarCartoes = { navController.navigate(Rotas.CARTOES) },
                     onPagamentoConfirmado = {
                         pagamentoViewModel.carroReservado?.let { carro ->
+<<<<<<< HEAD
                             ReservasRepositorio.inserir(context, carro, pagamentoViewModel.dias)
+=======
+                            reservasViewModel.adicionarReserva(carro, pagamentoViewModel.dias)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                         }
                         navController.navigate(Rotas.RESERVA_CONCLUIDA) {
                             popUpTo(Rotas.PAGAMENTO) { inclusive = true }

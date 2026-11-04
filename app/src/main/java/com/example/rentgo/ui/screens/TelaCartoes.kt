@@ -49,6 +49,7 @@ import com.example.rentgo.model.isCartaoVencido
 import com.example.rentgo.ui.components.PaymentTopBar
 import com.example.rentgo.ui.theme.RentGoCores
 
+<<<<<<< HEAD
 /**
  * "Meus cartões" (aberta pelo botão "Gerenciar" da tela de Pagamento).
  * Lista os cartões salvos no Room (LazyColumn + Card).
@@ -57,6 +58,8 @@ import com.example.rentgo.ui.theme.RentGoCores
  *  - REMOVER: lixeira em cada card -> dao.deletar(...);
  *  - clicar no card abre o Detalhe do cartão (editar).
  */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 @Composable
 fun TelaCartoes(
     onVoltar: () -> Unit,
@@ -192,7 +195,10 @@ private fun CardDoCartaoSalvo(cartao: CartaoSalvo, aoAbrir: () -> Unit, aoRemove
     }
 }
 
+<<<<<<< HEAD
 /** Formulário "Novo cartão". Valida com as mesmas funções da tela de Pagamento. */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 @Composable
 private fun DialogoNovoCartao(
     usuarioId: Int,

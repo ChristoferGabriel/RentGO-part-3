@@ -8,18 +8,24 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+<<<<<<< HEAD
 /**
  * Cartões salvos no Room. Mesmo padrão dos outros repositórios do app:
  * leituras são `suspend`, escritas rodam em CoroutineScope(Dispatchers.IO).launch
  * e devolvem a lista atualizada em `aoTerminar` (já na thread principal).
  */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 object CartoesRepositorio {
 
     private const val TAG = "CartoesRepositorio"
 
     private fun dao(context: Context): CartaoDao = AppDatabase.getDatabase(context).cartaoDao()
 
+<<<<<<< HEAD
     /** Id do usuário logado (0 se ninguém estiver logado). */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     fun usuarioAtualId(): Int = SessaoUsuario.usuarioLogado?.id ?: 0
 
     suspend fun buscarDoUsuario(context: Context, usuarioId: Int): List<CartaoSalvo> =
@@ -41,10 +47,13 @@ object CartoesRepositorio {
         }
     }
 
+<<<<<<< HEAD
     /**
      * Salva um cartão novo. O primeiro cartão do usuário vira o padrão automaticamente.
      * Se o mesmo cartão (mesmos 4 últimos dígitos, validade e titular) já estiver salvo, não duplica.
      */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     fun inserir(context: Context, cartao: CartaoSalvo, aoTerminar: (List<CartaoSalvo>) -> Unit = {}) {
         CoroutineScope(Dispatchers.IO).launch {
             var lista: List<CartaoSalvo> = emptyList()
@@ -84,7 +93,10 @@ object CartoesRepositorio {
         }
     }
 
+<<<<<<< HEAD
     /** Remove o cartão; se ele era o padrão, o próximo da lista passa a ser. */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     fun deletar(context: Context, cartao: CartaoSalvo, aoTerminar: (List<CartaoSalvo>) -> Unit = {}) {
         CoroutineScope(Dispatchers.IO).launch {
             var lista: List<CartaoSalvo> = emptyList()

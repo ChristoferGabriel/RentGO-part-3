@@ -93,6 +93,7 @@ class PagamentoViewModel : ViewModel() {
     var pagamentoConcluido by mutableStateOf(false)
         private set
 
+<<<<<<< HEAD
     // ---- cartões salvos (Room) ----
     var cartoesSalvos by mutableStateOf<List<CartaoSalvo>>(emptyList())
         private set
@@ -104,6 +105,18 @@ class PagamentoViewModel : ViewModel() {
     var salvarCartao by mutableStateOf(false)
         private set
     /** Texto mostrado na tela de Reserva concluída, ex.: "Visa •••• 4242" ou "Pix". */
+=======
+    var cartoesSalvos by mutableStateOf<List<CartaoSalvo>>(emptyList())
+        private set
+
+    var cartaoSelecionado by mutableStateOf<CartaoSalvo?>(null)
+        private set
+
+    private var usandoNovoCartao by mutableStateOf(false)
+    var salvarCartao by mutableStateOf(false)
+        private set
+
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     var descricaoPagamento by mutableStateOf("")
         private set
 
@@ -125,10 +138,13 @@ class PagamentoViewModel : ViewModel() {
     val cartaoSelecionadoVencido: Boolean
         get() = cartaoSelecionado?.let { isCartaoVencido(it.validade) } ?: false
 
+<<<<<<< HEAD
     /**
      * Pix: sempre pode. Cartão salvo: só precisa do CVV (e não pode estar vencido).
      * Cartão novo: formulário completo válido.
      */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     val podeConfirmar: Boolean
         get() = formaPagamento == FormaPagamento.PIX ||
                 (cartaoSelecionado?.let { !isCartaoVencido(it.validade) && isCvvValido(cvv) }
@@ -152,10 +168,16 @@ class PagamentoViewModel : ViewModel() {
     fun alterarCvv(valor: String) { cvv = valor }
     fun alterarNomeTitular(valor: String) { nomeTitular = valor }
 
+<<<<<<< HEAD
     /** Chamado quando as telas leem os cartões do banco: guarda a lista e escolhe o cartão padrão. */
     fun carregarCartoes(lista: List<CartaoSalvo>) {
         cartoesSalvos = lista
         // atualiza (ou descarta, se foi removido) o cartão que estava selecionado
+=======
+    fun carregarCartoes(lista: List<CartaoSalvo>) {
+        cartoesSalvos = lista
+
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
         cartaoSelecionado = cartaoSelecionado?.let { atual -> lista.find { it.id == atual.id } }
         if (cartaoSelecionado == null && !usandoNovoCartao) {
             cartaoSelecionado = lista.firstOrNull { it.padrao } ?: lista.firstOrNull()
@@ -212,7 +234,10 @@ fun TelaPagamento(
     val reserva = viewModel.reserva
     val pagaComPix = viewModel.formaPagamento == FormaPagamento.PIX
 
+<<<<<<< HEAD
     // Ao abrir a tela (e ao voltar de "Meus cartões"), busca os cartões salvos no banco.
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     LaunchedEffect(Unit) {
         viewModel.carregarCartoes(
             CartoesRepositorio.buscarDoUsuario(context, CartoesRepositorio.usuarioAtualId())
@@ -304,7 +329,11 @@ fun TelaPagamento(
             BotaoConfirmarPagamento(
                 habilitado = viewModel.podeConfirmar,
                 onConfirmar = {
+<<<<<<< HEAD
                     // cartão digitado + caixa "Salvar" marcada -> guarda no Room (só 4 últimos dígitos)
+=======
+
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                     val cartaoParaSalvar = if (!pagaComPix && viewModel.cartaoSelecionado == null && viewModel.salvarCartao) {
                         val digitos = viewModel.numeroCartao.filter { it.isDigit() }
                         val bandeira = descobrirBandeira(digitos)
@@ -572,7 +601,10 @@ fun CamposDoCartao(
     }
 }
 
+<<<<<<< HEAD
 /** Lista de cartões salvos (vindos do Room) + "Usar outro cartão" + atalho para gerenciar. */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 @Composable
 fun CartoesSalvosSecao(
     cartoes: List<CartaoSalvo>,
@@ -628,7 +660,10 @@ fun CartoesSalvosSecao(
     }
 }
 
+<<<<<<< HEAD
 /** Com cartão salvo, só falta o CVV (ele nunca é guardado no banco). */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 @Composable
 fun CampoCvvDoCartaoSalvo(
     cartao: CartaoSalvo,

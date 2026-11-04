@@ -38,4 +38,8 @@ data class Carro(
 
 fun formatarPreco(valor: Double): String =
     if (valor % 1.0 == 0.0) "R$ ${valor.toInt()}"
+<<<<<<< HEAD
     else "R$ " + String.format(Locale.forLanguageTag("pt-BR"), "%.2f", valor)
+=======
+    else "R$ " + String.format(Locale.forLanguageTag("pt-BR"), "%.2f", valor)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)

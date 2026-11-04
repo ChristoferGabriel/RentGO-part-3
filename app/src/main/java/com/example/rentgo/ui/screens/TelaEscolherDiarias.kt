@@ -32,11 +32,17 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+<<<<<<< HEAD
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+=======
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -44,13 +50,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+<<<<<<< HEAD
 import androidx.compose.ui.platform.LocalContext
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+<<<<<<< HEAD
 import com.example.rentgo.data.CarrosRepositorio
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import com.example.rentgo.model.Carro
 import com.example.rentgo.model.formatarPreco
 import com.example.rentgo.ui.components.FotoCarro
@@ -58,6 +70,10 @@ import com.example.rentgo.ui.components.MAX_DIARIAS
 import com.example.rentgo.ui.components.MIN_DIARIAS
 import com.example.rentgo.ui.components.TopoRentGo
 import com.example.rentgo.ui.theme.RentGoCores
+<<<<<<< HEAD
+=======
+import com.example.rentgo.viewmodel.carrosViewModel
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
 private const val DIARIAS_SUGERIDAS = 5
 private val atalhosDeDiarias = listOf(1, 3, 5, 7, 15, 30)
@@ -70,6 +86,7 @@ fun TelaEscolherDiarias(
     onVoltar: () -> Unit,
     onContinuar: (Carro, Int) -> Unit
 ) {
+<<<<<<< HEAD
     val context = LocalContext.current
     var carroDoBanco by remember(carroId) { mutableStateOf<Carro?>(null) }
     var carregando by remember(carroId) { mutableStateOf(true) }
@@ -81,6 +98,14 @@ fun TelaEscolherDiarias(
     }
 
     val carro = carroDoBanco
+=======
+    val viewModel = carrosViewModel()
+    val uiState by viewModel.uiState.collectAsState()
+    val carregando = uiState.carregando
+    var dias by rememberSaveable { mutableIntStateOf(DIARIAS_SUGERIDAS) }
+
+    val carro = uiState.carroPorId(carroId)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
     Scaffold(
         containerColor = RentGoCores.Fundo,

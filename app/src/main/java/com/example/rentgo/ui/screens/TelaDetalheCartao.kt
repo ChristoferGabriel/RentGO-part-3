@@ -45,6 +45,7 @@ import com.example.rentgo.model.isCartaoVencido
 import com.example.rentgo.ui.components.PaymentTopBar
 import com.example.rentgo.ui.theme.RentGoCores
 
+<<<<<<< HEAD
 /**
  * Detalhe do cartão. Recebe só o id pela rota e BUSCA O CARTÃO NO BANCO
  * (LaunchedEffect + CartoesRepositorio.buscarPorId -> dao.buscarPorId(id)).
@@ -52,6 +53,8 @@ import com.example.rentgo.ui.theme.RentGoCores
  * Aqui dá para EDITAR (apelido, titular, validade e "cartão padrão" -> dao.atualizar)
  * e REMOVER (dao.deletar). O número do cartão não é editável: para trocar o cartão, salve outro.
  */
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 @Composable
 fun TelaDetalheCartao(cartaoId: Int, onVoltar: () -> Unit) {
     val context = LocalContext.current
@@ -202,7 +205,11 @@ fun TelaDetalheCartao(cartaoId: Int, onVoltar: () -> Unit) {
                                 apelido = apelido.trim().ifBlank { atual.descricao },
                                 nomeTitular = titular.trim(),
                                 validade = validade,
+<<<<<<< HEAD
                                 // não deixa ficar sem nenhum padrão: quem já era padrão continua sendo
+=======
+
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                                 padrao = padrao || atual.padrao
                             )
                             CartoesRepositorio.atualizar(context, atualizado) { onVoltar() }

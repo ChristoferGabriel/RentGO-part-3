@@ -34,7 +34,11 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+<<<<<<< HEAD
 import androidx.compose.runtime.LaunchedEffect
+=======
+import androidx.compose.runtime.collectAsState
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -42,20 +46,27 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+<<<<<<< HEAD
 import androidx.compose.ui.platform.LocalContext
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+<<<<<<< HEAD
 import com.example.rentgo.data.CarrosRepositorio
 import com.example.rentgo.data.ReservasRepositorio
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import com.example.rentgo.model.Carro
 import com.example.rentgo.model.Reserva
 import com.example.rentgo.model.formatarPreco
 import com.example.rentgo.ui.components.MAX_DIARIAS
 import com.example.rentgo.ui.components.MIN_DIARIAS
 import com.example.rentgo.ui.theme.RentGoCores
+<<<<<<< HEAD
 
 @Composable
 fun TelaAgendamento(onAbrirReserva: (Int) -> Unit) {
@@ -70,6 +81,19 @@ fun TelaAgendamento(onAbrirReserva: (Int) -> Unit) {
     }
 
 
+=======
+import com.example.rentgo.viewmodel.carrosViewModel
+import com.example.rentgo.viewmodel.reservasViewModel
+
+@Composable
+fun TelaAgendamento(onAbrirReserva: (Int) -> Unit) {
+    val viewModel = reservasViewModel()
+    val uiState by viewModel.uiState.collectAsState()
+    val reservas = uiState.reservas
+    val carregando = uiState.carregando
+    var mostrarDialogo by remember { mutableStateOf(false) }
+
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -109,7 +133,11 @@ fun TelaAgendamento(onAbrirReserva: (Int) -> Unit) {
                     reserva = reserva,
                     aoAbrir = { onAbrirReserva(reserva.id) },
                     aoRemover = {
+<<<<<<< HEAD
                         ReservasRepositorio.deletar(context, reserva) { listaAtualizada -> reservas = listaAtualizada }
+=======
+                        viewModel.removerReserva(reserva)
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                     }
                 )
                 Spacer(Modifier.height(14.dp))
@@ -164,17 +192,26 @@ private fun CardDaReserva(reserva: Reserva, aoAbrir: () -> Unit, aoRemover: () -
 
 @Composable
 private fun DialogoNovaReserva(onFechar: () -> Unit, onSalvar: (Carro, Int) -> Unit) {
+<<<<<<< HEAD
     val context = LocalContext.current
     var carrosDisponiveis by remember { mutableStateOf(listOf<Carro>()) }
+=======
+    val carrosViewModel = carrosViewModel()
+    val carrosUiState by carrosViewModel.uiState.collectAsState()
+    val carrosDisponiveis = carrosUiState.carros
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     var carroEscolhido by remember { mutableStateOf<Carro?>(null) }
     var menuAberto by remember { mutableStateOf(false) }
     var diasTexto by remember { mutableStateOf("1") }
     var erro by remember { mutableStateOf<String?>(null) }
 
+<<<<<<< HEAD
     LaunchedEffect(Unit) {
         carrosDisponiveis = CarrosRepositorio.buscarTodos(context)
     }
 
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
     AlertDialog(
         onDismissRequest = onFechar,
         title = { Text("Nova reserva", fontWeight = FontWeight.Bold) },

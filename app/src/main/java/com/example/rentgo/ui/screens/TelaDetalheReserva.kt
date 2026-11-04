@@ -17,26 +17,39 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+<<<<<<< HEAD
 import androidx.compose.runtime.LaunchedEffect
+=======
+import androidx.compose.runtime.collectAsState
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+<<<<<<< HEAD
 import androidx.compose.ui.platform.LocalContext
+=======
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+<<<<<<< HEAD
 import com.example.rentgo.data.CarrosRepositorio
 import com.example.rentgo.data.ReservasRepositorio
 import com.example.rentgo.model.Carro
 import com.example.rentgo.model.Categoria
 import com.example.rentgo.model.Reserva
+=======
+import com.example.rentgo.model.Carro
+import com.example.rentgo.model.Categoria
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 import com.example.rentgo.model.formatarPreco
 import com.example.rentgo.ui.components.FotoCarro
 import com.example.rentgo.ui.components.TopoRentGo
 import com.example.rentgo.ui.theme.RentGoCores
+<<<<<<< HEAD
 
 @Composable
 fun TelaDetalheReserva(reservaId: Int, onVoltar: () -> Unit) {
@@ -52,6 +65,22 @@ fun TelaDetalheReserva(reservaId: Int, onVoltar: () -> Unit) {
         carroDaReserva = if (encontrada != null) CarrosRepositorio.buscarPorId(context, encontrada.carroId) else null
         carregando = false
     }
+=======
+import com.example.rentgo.viewmodel.carrosViewModel
+import com.example.rentgo.viewmodel.reservasViewModel
+
+@Composable
+fun TelaDetalheReserva(reservaId: Int, onVoltar: () -> Unit) {
+    val reservasViewModel = reservasViewModel()
+    val carrosViewModel = carrosViewModel()
+    val reservasUiState by reservasViewModel.uiState.collectAsState()
+    val carrosUiState by carrosViewModel.uiState.collectAsState()
+    val carregando = reservasUiState.carregando || carrosUiState.carregando
+    var cancelando by remember { mutableStateOf(false) }
+
+    val reservaDoBanco = reservasUiState.reservaPorId(reservaId)
+    val carroDaReserva = reservaDoBanco?.let { carrosUiState.carroPorId(it.carroId) }
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 
     Scaffold(
         containerColor = RentGoCores.Fundo,
@@ -156,7 +185,11 @@ fun TelaDetalheReserva(reservaId: Int, onVoltar: () -> Unit) {
             OutlinedButton(
                 onClick = {
                     cancelando = true
+<<<<<<< HEAD
                     ReservasRepositorio.deletar(context, reserva) { onVoltar() }
+=======
+                    reservasViewModel.removerReserva(reserva) { onVoltar() }
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
                 },
                 enabled = !cancelando,
                 modifier = Modifier
@@ -170,4 +203,8 @@ fun TelaDetalheReserva(reservaId: Int, onVoltar: () -> Unit) {
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)

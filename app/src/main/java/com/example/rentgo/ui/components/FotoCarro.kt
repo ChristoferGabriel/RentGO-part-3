@@ -44,7 +44,6 @@ private val IconeCamionete: ImageVector by lazy {
         viewportHeight = 24f
     ).apply {
 <<<<<<< HEAD
-        // Carroceria: caçamba aberta atrás, cabine e capô na frente
 =======
 
 >>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
@@ -69,7 +68,6 @@ private val IconeCamionete: ImageVector by lazy {
             horizontalLineTo(14.7f)
         }
 <<<<<<< HEAD
-        // Janela da cabine
 =======
 
 >>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
@@ -86,7 +84,6 @@ private val IconeCamionete: ImageVector by lazy {
             close()
         }
 <<<<<<< HEAD
-        // Roda de trás
 =======
 
 >>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
@@ -102,7 +99,6 @@ private val IconeCamionete: ImageVector by lazy {
             close()
         }
 <<<<<<< HEAD
-        // Roda da frente
 =======
 
 >>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)

@@ -4,10 +4,6 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 <<<<<<< HEAD
-/**
- * Versão 1 -> 2 do banco: cria a tabela "cartoes" (cartões salvos do Pagamento)
- * sem apagar carros, reservas e usuários que já estão no aparelho.
- */
 =======
 >>>>>>> eeb93c3 (Atualizacao Arquitetura MVVM)
 val MIGRACAO_1_2 = object : Migration(1, 2) {
